@@ -1,0 +1,779 @@
+/* General Body Styles & Root Variables */
+:root {
+    --primary-green: #38c172; /* Used for CTA, register, solution card border */
+    --secondary-green: #d1fae5; /* Lighter green for hover effects */
+    --light-gray: #f9fafb; /* Background for some sections */
+    --dark-text: #1f2937;
+    --medium-text: #4b5563;
+    --red-card-border: #f87171; /* Problem card border */
+    --red-card-header-bg: #ffe4e6; /* Light red background for problem card header */
+    --green-card-header-bg: #e6ffe6; /* Light green background for solution card header */
+    --red-card-glow: rgba(248, 113, 113, 0.4); /* Red glow for problem card */
+    --green-card-glow: rgba(56, 193, 114, 0.4); /* Green glow for solution card */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+
+    /* Variables for arrow styling */
+    --accent-arrow-color: #333333; /* Darker color for arrow and its border */
+    --arrow-bg-color: #ffffff; /* White background for the arrow circle */
+    --arrow-shadow: rgba(0, 0, 0, 0.2); /* Shadow for the arrow circle */
+
+    /* Variables for Features Section */
+    --features-bg-color: #fcf6ed; /* Background color for features section */
+    --feature-card-border: #e0e0e0; /* Border color for feature cards */
+    --feature-card-shadow: rgba(0, 0, 0, 0.08); /* Shadow for feature cards */
+    --feature-text-color: #333333; /* Text color inside feature cards */
+
+    /* Variables for FAQ Section */
+    --faq-bg-color: #ffffff; /* Background color for FAQ section */
+    --faq-item-bg-color: #d1fae5; /* Background for question part (light green) */
+    --faq-answer-bg-color: #fffef2; /* Background for answer part (light yellow) */
+    --faq-border-color: #d1fae5; /* Border color for FAQ items (greenish) */
+    --faq-text-color: #333333; /* Text color for FAQ questions/answers */
+    --faq-arrow-color: #38c172; /* Color for the arrow */
+    --faq-shadow: rgba(0, 0, 0, 0.08); /* Shadow for FAQ items */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--dark-text);
+    line-height: 1.6;
+    background-color: white;
+}
+
+/* Header and Navigation */
+header {
+    padding: 20px 40px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav > div:first-child {
+    display: flex;
+    align-items: center;
+}
+
+nav > div:first-child img {
+    height: 80px; /* Logo size */
+}
+
+.register-btn,
+.signin-btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.register-btn {
+    background-color: var(--primary-green);
+    color: white;
+    margin-right: 15px;
+    border: 1px solid var(--primary-green);
+}
+
+.register-btn:hover {
+    background-color: #2e9f5e;
+    border-color: #2e9f5e;
+}
+
+.signin-btn {
+    background-color: transparent;
+    border: 1px solid var(--primary-green);
+    color: var(--primary-green);
+}
+
+.signin-btn:hover {
+    background-color: var(--secondary-green);
+    border-color: var(--primary-green);
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.hero-text {
+    flex: 1 1 45%;
+    min-width: 300px;
+    max-width: 550px;
+}
+
+.hero-text h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+    line-height: 1.1;
+}
+
+.hero-text p {
+    font-size: 1.25rem;
+    color: var(--medium-text);
+    margin-bottom: 30px;
+}
+
+.cta-btn {
+    display: inline-block;
+    background-color: var(--primary-green);
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+    background-color: #2e9f5e;
+}
+
+.hero-image {
+    flex: 1 1 50%;
+    min-width: 350px;
+    max-width: 600px;
+    text-align: right;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+}
+
+/* Problem-Solution Section */
+.problem-solution {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 40px;
+    background-color: var(--light-gray);
+    gap: 40px;
+}
+
+.problem-card,
+.solution-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px var(--shadow-color);
+    text-align: left;
+    overflow: hidden;
+}
+
+.problem-card {
+    border: 3px solid var(--red-card-border);
+    box-shadow: 0 0 20px 5px var(--red-card-glow);
+}
+
+.solution-card {
+    border: 3px solid var(--primary-green);
+    box-shadow: 0 0 20px 5px var(--green-card-glow);
+}
+
+/* Card Header Content (Icon + Title) */
+.card-header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px 20px 20px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.problem-card .card-header-content {
+    background-color: var(--red-card-header-bg);
+}
+
+.solution-card .card-header-content {
+    background-color: var(--green-card-header-bg);
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.problem-card h2,
+.solution-card h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.problem-card h2 {
+    color: var(--red-card-border);
+}
+
+.solution-card h2 {
+    color: var(--primary-green);
+}
+
+.problem-card ul,
+.solution-card ul {
+    list-style: none;
+    padding: 0 40px 40px 40px;
+}
+
+.problem-card li,
+.solution-card li {
+    margin-bottom: 25px;
+    position: relative;
+    padding-left: 35px;
+    font-size: 1.1rem;
+    color: var(--medium-text);
+    line-height: 1.5;
+}
+
+.problem-card li:last-child,
+.solution-card li:last-child {
+    margin-bottom: 0;
+}
+
+/* Custom bullet points */
+.problem-card li::before,
+.solution-card li::before {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 3px;
+}
+
+.problem-card li::before {
+    background-color: var(--red-card-border);
+}
+
+.solution-card li::before {
+    background-color: var(--primary-green);
+}
+
+/* Text wrapping for strong and span */
+.problem-card li strong,
+.solution-card li strong {
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-right: 5px;
+    display: inline;
+}
+
+.problem-card li span,
+.solution-card li span {
+    display: inline;
+}
+
+/* Arrow Styling - Reverted to original request */
+.arrow {
+    font-size: 5rem; /* Large size for the arrow character */
+    color: var(--medium-text); /* Color for the arrow */
+    font-weight: 200; /* Lighter font-weight for a cleaner line */
+    order: 0;
+    padding: 0 20px; /* Space around the arrow */
+    line-height: 1;
+
+    /* No circle container, just the character itself */
+    display: block;
+    width: auto;
+    height: auto;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    box-shadow: none;
+
+    /* By default, &rarr; points right, no initial transform needed */
+    transition: transform 0.3s ease; /* For smooth rotation on responsive */
+}
+
+.arrow:hover {
+    transform: translateY(-5px); /* Simple lift effect on hover */
+    /* No box-shadow for hover as there's no container */
+}
+
+/* Features Section */
+.features-section {
+    background-color: var(--features-bg-color);
+    padding: 100px 40px;
+    text-align: center;
+}
+
+.features-section h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--dark-text);
+    margin-bottom: 60px;
+}
+
+.features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background-color: white;
+    border: 1px solid var(--feature-card-border);
+    border-radius: 20px;
+    padding: 30px;
+    width: 320px;
+    box-shadow: 0 8px 15px var(--feature-card-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px var(--feature-card-shadow);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 25px;
+}
+
+.feature-card h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.feature-card p {
+    font-size: 1rem;
+    color: var(--feature-text-color);
+    line-height: 1.6;
+}
+
+/* FAQ Section */
+.faq-section {
+    background-color: var(--faq-bg-color);
+    padding: 100px 40px;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.faq-main-icon {
+    width: 100px;
+    height: auto;
+    margin-bottom: 50px;
+    object-fit: contain;
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.faq-item {
+    background-color: transparent;
+    border: 1px solid var(--faq-border-color); /* Updated border color for consistency */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px var(--faq-shadow);
+    text-align: left;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 30px;
+    background-color: var(--faq-item-bg-color); /* Using variable for light green */
+    border: none;
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    transition: background-color 0.3s ease;
+    /* border-radius for question handled by parent .faq-item and specific rules below */
+    border-bottom: 1px solid var(--faq-border-color); /* Separator line with consistent color */
+}
+
+/* Specific styling for the border radius of faq-question when not active (answer hidden) */
+.faq-item:not(.active) .faq-question {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    /* Ensure no bottom border if answer is hidden to merge with item's border */
+    border-bottom: none;
+}
+
+.faq-item.active .faq-question {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.faq-question:hover {
+    background-color: #c0f0cc; /* Slightly darker green on hover */
+}
+
+.faq-arrow {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--faq-arrow-color);
+    margin-left: 15px;
+    transition: transform 0.3s ease;
+    transform: rotate(90deg); /* Initial state: points down (from &gt;) */
+}
+
+.faq-item.active .faq-arrow {
+    transform: rotate(270deg); /* Rotate to point up when active */
+}
+
+.faq-answer {
+    padding: 0 30px;
+    background-color: var(--faq-answer-bg-color); /* Using variable for light yellow */
+    color: var(--medium-text);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px; /* A value larger than content height */
+    padding: 20px 30px 30px 30px; /* Visible padding when active */
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .hero-text {
+        padding-right: 0;
+        margin-bottom: 40px;
+        max-width: 700px;
+        flex: none;
+        width: 100%;
+    }
+
+    .hero-image {
+        min-width: unset;
+        max-width: 500px;
+        flex: none;
+        width: 100%;
+        text-align: center;
+    }
+    .hero-image img {
+        margin: 0 auto;
+    }
+
+    .problem-solution {
+        flex-direction: column;
+        padding: 60px 20px;
+    }
+
+    .arrow {
+        font-size: 3rem; /* Adjusted for smaller screens */
+        transform: rotate(90deg); /* Rotate to point down for stacked cards */
+        margin: 30px 0;
+        order: 1;
+        width: auto;
+        height: auto;
+        border: none;
+        border-radius: 0;
+        background-color: transparent;
+        box-shadow: none;
+    }
+    .arrow:hover {
+        transform: rotate(90deg) translateY(-5px); /* Lift effect on hover while rotated */
+    }
+
+    .problem-card {
+        order: 0;
+    }
+
+    .solution-card {
+        order: 2;
+    }
+
+    /* Responsive adjustments for Features Section (1024px) */
+    .features-section {
+        padding: 80px 30px;
+    }
+    .features-section h2 {
+        font-size: 2.2rem;
+        margin-bottom: 50px;
+    }
+    .features-grid {
+        gap: 30px;
+    }
+    .feature-card {
+        width: 300px;
+        padding: 25px;
+    }
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 20px;
+    }
+    .feature-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 12px;
+    }
+
+    /* Responsive adjustments for FAQ Section (1024px) */
+    .faq-section {
+        padding: 80px 30px;
+    }
+    .faq-main-icon {
+        width: 90px;
+        margin-bottom: 45px;
+    }
+    .faq-question {
+        padding: 18px 25px;
+        font-size: 1.1rem;
+    }
+    .faq-answer {
+        padding: 0 25px;
+    }
+    .faq-item.active .faq-answer {
+        padding: 18px 25px 25px 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    nav > div:last-child {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .register-btn,
+    .signin-btn {
+        flex: 1;
+        text-align: center;
+        margin: 0 5px;
+    }
+
+    header {
+        padding: 20px;
+    }
+
+    nav > div:first-child img {
+        height: 60px;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .cta-btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    .problem-card,
+    .solution-card {
+        padding: 0;
+        min-width: unset;
+        max-width: 100%;
+    }
+
+    .problem-card ul,
+    .solution-card ul {
+        padding: 30px 20px 30px 20px;
+    }
+
+    .problem-card li,
+    .solution-card li {
+        font-size: 1rem;
+        padding-left: 30px;
+        margin-bottom: 20px;
+    }
+    .problem-card li::before,
+    .solution-card li::before {
+        width: 12px;
+        height: 12px;
+        top: 4px;
+    }
+
+    .problem-card h2,
+    .solution-card h2 {
+        font-size: 1.5rem;
+    }
+    .card-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .card-header-content {
+        padding: 25px 15px 15px 15px;
+        margin-bottom: 25px;
+    }
+
+    /* Responsive adjustments for Features Section (768px) */
+    .features-section {
+        padding: 60px 20px;
+    }
+    .features-section h2 {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+    .features-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+    .feature-card {
+        width: 100%;
+        max-width: 350px;
+        padding: 20px;
+    }
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+    .feature-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    .feature-card p {
+        font-size: 0.95rem;
+    }
+
+    /* Responsive adjustments for FAQ Section (768px) */
+    .faq-section {
+        padding: 60px 20px;
+        max-width: 100%;
+    }
+    .faq-main-icon {
+        width: 80px;
+        margin-bottom: 40px;
+    }
+    .faq-container {
+        gap: 15px;
+    }
+    .faq-question {
+        padding: 18px 25px;
+        font-size: 1.05rem;
+    }
+    .faq-arrow {
+        font-size: 1.3rem;
+        margin-left: 10px;
+    }
+    .faq-answer {
+        padding: 0 25px;
+        font-size: 0.95rem;
+    }
+    .faq-item.active .faq-answer {
+        padding: 15px 25px 25px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    nav > div:last-child {
+        flex-direction: column;
+    }
+    .register-btn,
+    .signin-btn {
+        margin: 5px 0;
+    }
+
+    .arrow {
+        font-size: 2.5rem; /* Smallest arrow size for mobile */
+        width: auto;
+        height: auto;
+        border: none;
+        border-radius: 0;
+        background-color: transparent;
+        box-shadow: none;
+    }
+    .arrow:hover {
+        transform: rotate(90deg) translateY(-5px); /* Maintain hover effect */
+    }
+
+    /* Responsive adjustments for Features Section (480px) */
+    .features-section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+    .feature-card {
+        max-width: 300px;
+    }
+
+    /* Responsive adjustments for FAQ Section (480px) */
+    .faq-section {
+        padding: 40px 15px;
+    }
+    .faq-main-icon {
+        width: 70px;
+        margin-bottom: 30px;
+    }
+    .faq-question {
+        padding: 15px 20px;
+        font-size: 1rem;
+    }
+    .faq-arrow {
+        font-size: 1.2rem;
+    }
+    .faq-answer {
+        padding: 0 20px;
+        font-size: 0.9rem;
+    }
+    .faq-item.active .faq-answer {
+        padding: 12px 20px 20px 20px;
+    }
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Breathe - Data Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.23.0/maps/maps.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="aura.css">
+</head>
+<body>
+    <header class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/logo aura breathe.png" alt="Aura Breathe Logo" height="40"> 
+            </a>
+            <div class="ms-auto">
+                <a href="#" class="btn btn-link profile-icon">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="app-main pt-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    <div class="card p-4 aura-card">
+                        <h2 class="card-title text-center mb-4">User Data Input</h2>
+                        <form id="auraDataForm" class="needs-validation" novalidate>
+
+                            <div class="mb-4 p-3 form-section">
+                                <h5 class="section-title"><i class="fas fa-user-shield"></i>Personal Information</h5>
+                                <div class="mb-3">
+                                    <label for="healthStatus" class="form-label">Health Status:</label>
+                                    <select class="form-select" id="healthStatus" name="healthStatus" required>
+                                        <option value="">Select...</option>
+                                        <option value="healthy">Healthy</option>
+                                        <option value="asthma">Asthma</option>
+                                        <option value="allergies">Allergies</option>
+                                        <option value="pregnant">Pregnant</option>
+                                        <option value="other_health">Other (specify)</option>
+                                    </select>
+                                    <input type="text" class="form-control mt-2 hidden" id="otherHealthStatus" name="other_health_status" placeholder="Specify your health condition">
+                                    <div class="invalid-feedback">Please select or specify your health status.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label d-block">Gender:</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" id="genderMale" value="male" required>
+                                        <label class="form-check-label" for="genderMale">Male</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="female" required>
+                                        <label class="form-check-label" for="genderFemale">Female</label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="ageCategory" class="form-label">Age Category:</label>
+                                    <select class="form-select" id="ageCategory" name="ageCategory" required>
+                                        <option value="">Select...</option>
+                                        <option value="child">Under 12</option>
+                                        <option value="teen">12-18</option>
+                                        <option value="adult">18-60</option>
+                                        <option value="senior">Over 60</option>
+                                    </select>
+                                    <div class="invalid-feedback">Please select an age category.</div>
+                                </div>
+                            </div>
+
+                            <div class="mb-4 p-3 form-section">
+                                <h5 class="section-title"><i class="fas fa-running"></i>Activity & Environment</h5>
+                                <div class="mb-3">
+                                    <label for="userActivity" class="form-label">Your Current Activity:</label>
+                                    <select class="form-select" id="userActivity" name="userActivity" required>
+                                        <option value="">Select...</option>
+                                        <option value="running">Running</option>
+                                        <option value="walking">Walking</option>
+                                        <option value="sitting">Resting</option>
+                                        <option value="other_activity">Other (specify)</option>
+                                    </select>
+                                    <input type="text" class="form-control mt-2 hidden" id="otherUserActivity" name="other_user_activity" placeholder="Specify your activity">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="place" class="form-label">Your Current Environment:</label>
+                                    <select class="form-select" id="place" name="place" required>
+                                        <option value="">Select...</option>
+                                        <option value="park">Park / Outdoors</option>
+                                        <option value="school">School / University</option>
+                                        <option value="work">Work / Office</option>
+                                        <option value="home">Home</option>
+                                        <option value="street">Street / Open Area</option>
+                                        <option value="other_place">Other (specify)</option>
+                                    </select>
+                                    <input type="text" class="form-control mt-2 hidden" id="otherPlace" name="other_place" placeholder="Specify your environment">
+                                </div>
+                            </div>
+
+                            <div class="mb-4 p-3 form-section">
+                                <h5 class="section-title"><i class="fas fa-question-circle"></i>What would you like to know?</h5>
+                                <div class="mb-3">
+                                    <select class="form-select" id="whatToKnow" name="whatToKnow" required>
+                                        <option value="">Select an option...</option>
+                                        <option value="current_analysis">Current environmental analysis</option>
+                                        <option value="safe_forecast">Safety forecast for the next few days</option>
+                                        <option value="best_low_pollution_route">Find the best low-pollution route</option>
+                                        <option value="best_safe_park">Find a safe park nearby</option>
+                                        <option value="general_advice">General advice based on my data</option>
+                                        <option value="other_inquiry">Other inquiry (specify)</option>
+                                    </select>
+                                    <input type="text" class="form-control mt-2 hidden" id="otherInquiry" name="other_inquiry" placeholder="Enter your specific question">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4 p-3 form-section">
+                                <h5 class="section-title"><i class="fas fa-map-marked-alt"></i>Define Location / Route</h5>
+                                <div id="map" class="map-container mb-3"></div>
+                                <div class="d-grid gap-2 mb-3">
+                                    <button type="button" class="btn btn-info text-white" id="getCurrentLocationBtn">
+                                        <i class="fas fa-location-arrow me-2"></i>Use My Current Location
+                                    </button>
+                                </div>
+                                <div class="row g-2 mb-3">
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-warning w-100" id="pickOnMapBtn">
+                                            <i class="fas fa-map-pin me-2"></i>Pick a Point on Map
+                                        </button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-success w-100" id="selectRoutePointsBtn">
+                                            <i class="fas fa-route me-2"></i>Select Route Points
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="selectedLocationInfo" class="alert alert-light border d-flex justify-content-between align-items-center mb-3 hidden">
+                                    <span>Selected Location: </span><strong id="displayLatLon">--</strong>
+                                </div>
+                                <div id="routePointsDisplay" class="alert alert-light border mb-3 hidden">
+                                    <p class="mb-1"><strong>Start:</strong> <span id="startPointDisplay">--</span></p>
+                                    <p class="mb-0"><strong>End:</strong> <span id="endPointDisplay">--</span></p>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg w-100 submit-btn">
+                                <i class="fas fa-paper-plane me-2"></i>Get Insights
+                            </button>
+                        </form>
+
+                        <div id="resultsSection" class="mt-5 p-4 hidden">
+                            <h4 class="results-title"><i class="fas fa-chart-line"></i>Your Environmental Report</h4>
+                            <div id="resultsContent"></div>
+                            <div id="errorOutput" class="alert alert-danger mt-3" style="display: none;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.23.0/maps/maps-web.min.js"></script>
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.23.0/services/services-web.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="api.js"></script> 
+    <script src="aura.js"></script> 
+</body>
+</html>
